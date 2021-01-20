@@ -2,15 +2,16 @@
 <html lang="pt_br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/reset.css">
-    <link rel="stylesheet" href="../styles/cadastro_usuario.css">
-    <title>Cadastro de usuário</title>
+    <?php
+    require("../util/util.php");
+    echo getHead();
+    ?>
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/desenv_web/styles/cadastro_usuario.css">
 </head>
 
 <body>
-    <?php require("../components/header.php") ?>
+    <?php require("../util/header.php") ?>
     <form action="">
         <input type="email" placeholder="E-mail" name="email">
         <input type="text" placeholder="Nome" name="nome">
