@@ -2,16 +2,13 @@
 <html lang="pt_br">
 
 <head>
-    <?php
-    require("./util/util.php");
-    echo getHead();
-    ?>
+    <?php require("./template/head.php"); ?>
+    <link rel="stylesheet" href="/desenv_web/styles/header.css">
     <title>Desenvolvimento web</title>
 </head>
 
 <body>
-    <?php require("./util/header.php") ?>
-    <a href="./pages/cadastro_usuario.php">link</a>
+    <?php require("./template/header.php") ?>
 </body>
 
 </html>

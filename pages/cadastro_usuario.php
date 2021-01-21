@@ -2,16 +2,14 @@
 <html lang="pt_br">
 
 <head>
-    <?php
-    require("../util/util.php");
-    echo getHead();
-    ?>
-    <title>Cadastro</title>
+    <?php require("../template/head.php"); ?>
+    <link rel="stylesheet" href="/desenv_web/styles/header.css">
     <link rel="stylesheet" href="/desenv_web/styles/cadastro_usuario.css">
+    <title>Cadastro usuário</title>
 </head>
 
 <body>
-    <?php require("../util/header.php") ?>
+    <?php require("../template/header.php") ?>
     <form action="">
         <input type="email" placeholder="E-mail" name="email">
         <input type="text" placeholder="Nome" name="nome">
