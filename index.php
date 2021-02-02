@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt_br">
+<?php
 
-<head>
-    <?php require("./template/head.php"); ?>
-    <link rel="stylesheet" href="/desenv_web/styles/header.css">
-    <title>Desenvolvimento web</title>
-</head>
-
-<body>
-    <?php require("./template/header.php") ?>
-</body>
-
-</html>
+require __DIR__.'/vendor/autoload.php';
+include __DIR__.'/includes/header.php';
+include __DIR__ . '/includes/listagem.php';
+include __DIR__ . '/includes/footer.php';
