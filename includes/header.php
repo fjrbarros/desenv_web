@@ -31,7 +31,7 @@
 <body class="bg-dark text-light">
 
     <div class="container">
-        <div class="p-3 mb-3 bg-danger teste">
+        <div class="p-3 mb-3 bg-danger header">
             <h1>Game</h1>
             <p>Teste</p>
         </div>
