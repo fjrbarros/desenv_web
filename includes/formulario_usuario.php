@@ -10,28 +10,28 @@
     <form method="POST">
         <div class="mb-2">
             <label class="form-label">Nome</label>
-            <input type="text" class="form-control" name="nome">
+            <input required type="text" class="form-control" name="nome">
         </div>
 
         <div class="mb-2">
             <label class="form-label">E-mail</label>
-            <input type="email" class="form-control" name="email">
+            <input required type="email" class="form-control" name="email">
         </div>
 
         <div class="mb-2">
             <label class="form-label">Senha</label>
-            <input type="password" class="form-control" name="senha">
+            <input required type="password" class="form-control" name="senha">
         </div>
 
         <div class="mb-2">
             <div class="form-check">
-                <input id="chek-cliente" class="form-check-input" name="cliente" type="checkbox" value="c" checked>
+                <input id="chek-cliente" class="form-check-input" name="cliente" type="checkbox" value="s" checked>
                 <label class="form-check-label" for="chek-cliente">
                     Cliente
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" id="checkadm" name="administrador" type="checkbox" value="a">
+                <input class="form-check-input" id="checkadm" name="administrador" type="checkbox" value="s">
                 <label class="form-check-label" for="checkadm">
                     Administrador
                 </label>
