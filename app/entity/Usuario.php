@@ -2,6 +2,8 @@
 
 namespace App\entity;
 
+use \PDO;
+
 use \App\db\Database;
 
 class Usuario
@@ -10,8 +12,8 @@ class Usuario
     public $nome;
     public $email;
     public $senha;
-    public $cliente;
-    public $administrador;
+    public $cliente = "S";
+    public $administrador = "N";
     public $dataCadastro;
 
     public function cadastrar()
@@ -30,5 +32,10 @@ class Usuario
         ]);
 
         return true;
+    }
+
+    public static function getUsuarios($where = null, $order = null, $limit = null)
+    {
+        return (new Database('usuario'))->select($where, $order, $limit)->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 }

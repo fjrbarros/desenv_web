@@ -31,7 +31,6 @@
 <body class="bg-dark text-light">
 
     <div class="container">
-        <div class="p-3 mb-3 bg-danger header">
-            <h1>Game</h1>
-            <p>Teste</p>
+        <div class=" mb-3 bg-danger header text-center">
+            <h1 style="font-weight: 600; padding: 90px 10px;color: #0f0f0f;text-shadow: 2px 2px 3px #1bff00, 2px 2px 4px #1b1b1b;">Game Store</h1>
         </div>

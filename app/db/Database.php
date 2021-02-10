@@ -53,4 +53,15 @@ class Database
 
         return $this->connection->lastInsertId();
     }
+
+    public function select($where = null, $order = null, $limit = null, $fields = '*')
+    {
+        $where = strlen($where) ? 'where ' . $where : '';
+        $order = strlen($order) ? 'order by ' . $order : '';
+        $limit = strlen($limit) ? 'limit ' . $limit : '';
+
+        $query = 'select ' . $fields . ' from ' . $this->table . ' ' . $where . ' ' . $order . ' ' . $limit;
+
+        return $this->execute($query);
+    }
 }
