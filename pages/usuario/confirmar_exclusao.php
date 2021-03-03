@@ -3,7 +3,7 @@
         <p>Deseja realmente deseja excluir o usuário <strong><?= $usuario->nome ?></strong>?</p>
 
         <div class="mb-3 mt-3" style="display: flex; justify-content:space-between;">
-            <button type="submit" class="btn btn-danger">
+            <button type="submit" name="excluir" class="btn btn-danger">
                 <i class="fas fa-user-times"></i>&nbsp;<span>Excluir</span>
             </button>
 

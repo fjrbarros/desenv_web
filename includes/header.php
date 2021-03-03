@@ -13,6 +13,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="/desenv_web/styles/header.css">
     <link rel="stylesheet" href="/desenv_web/styles/inicio.css">
+    <script src="/desenv_web/script/default.js"></script>
 
     <title>Desenvolvimento Web</title>
 </head>

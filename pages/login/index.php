@@ -19,19 +19,30 @@ $usuario = new Usuario();
 $errorText = "";
 
 if (isset($_POST['login'])) {
-    $usuario->email = $_POST['email'];
-    $usuario->senha = $_POST['senha'];
 
-    $data = $usuario->login();
+    if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        $errorText .= "E-mail inválido. </br>";
+    }
 
-    if (count($data) === 0) {
-        $errorText = "Dados inválidos!";
-    } else {
-        $_SESSION['LOGADO'] = true;
-        $_SESSION['ADM'] = strtoupper($data[0]->administrador) === "S";
-        $_SESSION['ID_USUARIO'] = $data[0]->id;
-        header('location: ../../index.php');
-        exit;
+    if (strlen($_POST['senha']) < 6) {
+        $errorText .= "Senha deve possuir mais 6 ou mais caracteres";
+    }
+
+    if (strlen($errorText) == 0) {
+        $usuario->email = $_POST['email'];
+        $usuario->senha = $_POST['senha'];
+
+        $data = $usuario->login();
+
+        if (count($data) === 0) {
+            $errorText = "Dados inválidos!";
+        } else {
+            $_SESSION['LOGADO'] = true;
+            $_SESSION['ADM'] = strtoupper($data[0]->administrador) === "S";
+            $_SESSION['ID_USUARIO'] = $data[0]->id;
+            header('location: ../../index.php');
+            exit;
+        }
     }
 }
 

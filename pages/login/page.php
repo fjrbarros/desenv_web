@@ -11,7 +11,7 @@
 
 <body class="bg-dark">
     <form method="POST">
-        <input required placeholder="E-mail" type="email" class="form-control mb-3" name="email">
+        <input required placeholder="E-mail" type="text" class="form-control mb-3" name="email">
         <input required placeholder="Senha" type="password" class="form-control mb-3" name="senha">
         <?php
         if (strlen($errorText) > 0) {
