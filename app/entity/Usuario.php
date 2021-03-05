@@ -11,7 +11,8 @@ class Usuario
 {
     public $id;
     public $nome;
-    // public $estado;
+    public $estado;
+    public $cidade;
     public $email;
     public $senha;
     public $cliente = "S";
@@ -28,7 +29,8 @@ class Usuario
 
         $this->id = $database->insert([
             'nome' => $this->nome,
-            // 'estado' => $this->estado,
+            'estado' => $this->estado,
+            'cidade' => $this->cidade,
             'email' => $this->email,
             'senha' => $this->senha,
             'cliente' => $this->cliente,
@@ -44,7 +46,8 @@ class Usuario
     {
         return (new Database('usuario'))->update('id =' . $this->id, [
             'nome' => $this->nome,
-            // 'estado' => $this->estado,
+            'estado' => $this->estado,
+            'cidade' => $this->cidade,
             'email' => $this->email,
             'senha' => $this->senha,
             'cliente' => $this->cliente,

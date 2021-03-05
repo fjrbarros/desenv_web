@@ -35,7 +35,7 @@ if (isset($_POST['login'])) {
         $data = $usuario->login();
 
         if (count($data) === 0) {
-            $errorText = "Dados inválidos!";
+            $errorText = "Erro ao recuperar dados!";
         } else {
             $_SESSION['LOGADO'] = true;
             $_SESSION['ADM'] = strtoupper($data[0]->administrador) === "S";

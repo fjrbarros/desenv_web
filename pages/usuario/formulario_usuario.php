@@ -1,9 +1,12 @@
 <main>
-    <form method="POST" style="max-width: 600px; margin: 0 auto;">
+    <form method="POST" style="max-width: 600px; margin: 0 auto;" id="form-user">
         <h3 class="text-center"><?= TITLE ?></h3>
         <input required placeholder="Nome" type="text" class="form-control mb-3" name="nome" value="<?= $usuario ? $usuario->nome : '' ?>">
-        <select class="form-select mb-3" id="select-stado">
-        <option value="" disabled>Selecione um estado</option>
+        <select class="form-select mb-3" id="select-stado" name="estado">
+            <option selected disabled>Selecione um estado</option>
+        </select>
+        <select class="form-select mb-3" id="select-cidade" name="cidade">
+            <option selected disabled>Selecione uma cidade</option>
         </select>
         <input required placeholder="E-mail" type="email" class="form-control mb-3" name="email" value="<?= strlen($usuario->email) ? $usuario->email : '' ?>">
         <input required placeholder="Senha" type="password" class="form-control mb-3" name="senha">

@@ -23,6 +23,8 @@ if (isset($_POST['salvar'])) {
     $usuario->nome = $_POST['nome'];
     $usuario->email = $_POST['email'];
     $usuario->senha = $_POST['senha'];
+    $usuario->estado = $_POST['estado'];
+    $usuario->cidade = $_POST['cidade'];
     $usuario->cliente = $_POST['cliente'] ? $_POST['cliente'] : "";
     $usuario->administrador = $_POST['administrador'] ? $_POST['administrador'] : "";
 
@@ -33,6 +35,8 @@ if (isset($_POST['salvar'])) {
     $usuario->nome = "";
     $usuario->email = "";
     $usuario->senha = "";
+    $usuario->estado = "";
+    $usuario->cidade = "";
     $usuario->cliente = "";
     $usuario->administrador = "";
 }
