@@ -1,10 +1,17 @@
 window.addEventListener('load', carregaEstados);
 
+const editarUsuario = window.location.href.includes('editar_usuario.php');
+const cadastroUsuario = window.location.href.includes('cadastro_usuario.php');
+
+function isFormUsuario() {
+    return editarUsuario || cadastroUsuario;
+}
+
 function carregaEstados() {
-    if (!window.location.href.includes('editar_usuario.php') && !window.location.href.includes('cadastro_usuario.php')) return;
+    if (!isFormUsuario()) return;
 
     buscaEstados();
-    document.getElementById('select-stado').addEventListener('change', buscaCidade);
+    document.getElementById('select-estado').addEventListener('change', buscaCidade);
 }
 
 async function buscaEstados() {
@@ -12,24 +19,43 @@ async function buscaEstados() {
     try {
         let res = await fetch(url);
         const data = await res.json();
-        setValues('select-stado', data);
+        setValues('select-estado', data);
+        verificaEdicaoCadastro('select-estado', 'value-estado', () => buscaCidade(true));
     } catch (error) {
         console.error(error);
     }
 }
 
-async function buscaCidade(event) {
+function verificaEdicaoCadastro(element, value, callback) {
+
+    if (!editarUsuario) return;
+
+    const elementEdit = document.getElementById(element);
+
+    if (!elementEdit) return;
+
+    const valueEdit = document.getElementById(value).value;
+
+    if (!valueEdit) return;
+
+    elementEdit.value = valueEdit;
+
+    if (callback) callback();
+}
+
+async function buscaCidade(editCidade) {
     removeCidades();
 
-    const value = event.target.value;
+    const idEstado = document.getElementById('select-estado').value;
 
-    if (!value) return;
+    if (!idEstado) return;
 
-    var url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${value}/municipios?oderBy=nome`;
+    var url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idEstado}/municipios?oderBy=nome`;
     try {
         let res = await fetch(url);
         const data = await res.json();
         setValues('select-cidade', data);
+        if (editCidade) verificaEdicaoCadastro('select-cidade', 'value-cidade');
     } catch (error) {
         console.error(error);
     }

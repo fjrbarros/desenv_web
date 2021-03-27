@@ -1,8 +1,10 @@
 <main>
     <form method="POST" style="max-width: 600px; margin: 0 auto;" id="form-user">
         <h3 class="text-center"><?= TITLE ?></h3>
+        <input type="hidden" id="value-estado" value="<?= $usuario ? $usuario->estado : '' ?>"></input>
+        <input type="hidden" id="value-cidade" value="<?= $usuario ? $usuario->cidade : '' ?>"></input>
         <input required placeholder="Nome" type="text" class="form-control mb-3" name="nome" value="<?= $usuario ? $usuario->nome : '' ?>">
-        <select class="form-select mb-3" id="select-stado" name="estado">
+        <select class="form-select mb-3" id="select-estado" name="estado">
             <option selected disabled>Selecione um estado</option>
         </select>
         <select class="form-select mb-3" id="select-cidade" name="cidade">

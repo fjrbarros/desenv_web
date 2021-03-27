@@ -17,6 +17,7 @@ if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
 
 $usuario = Usuario::getUsuarioId($_GET['id']);
 
+
 if (!$usuario instanceof Usuario) {
     header('location: ./index.php?status=error');
     exit;
@@ -30,10 +31,15 @@ if (isset($_POST['salvar'])) {
         exit;
     }
 
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "</pre>";
+    // exit;
+
     $usuario->nome = $_POST['nome'];
     $usuario->email = $_POST['email'];
     $usuario->senha = $_POST['senha'];
-    $usuario->estadoa = $_POST['estado'];
+    $usuario->estado = $_POST['estado'];
     $usuario->cidade = $_POST['cidade'];
     $usuario->cliente = $_POST['cliente'] ? $_POST['cliente'] : '';
     $usuario->administrador = $_POST['administrador'] ? $_POST['administrador'] : '';
