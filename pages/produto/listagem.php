@@ -1,7 +1,7 @@
 <main>
     <section>
         <a href="./cadastro_produto.php">
-            <button class="btn btn-success">
+            <button class="btn btn-success btn-sm">
                 <i class="fas fa-plus"></i>
                 <span>Cadastrar</span>
             </button>
@@ -22,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-              
+
             </tbody>
         </table>
     </section>

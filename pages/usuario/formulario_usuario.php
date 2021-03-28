@@ -26,7 +26,7 @@
         </div>
 
         <div class="mb-3 mt-3" style="display: flex; justify-content:flex-end;">
-            <button type="submit" class="btn btn-success" name="salvar"><i class="fas fa-save"></i>&nbsp;<span>Salvar</span></button>
+            <button type="submit" class="btn btn-primary btn-sm" name="salvar"><i class="fas fa-save"></i>&nbsp;<span>Salvar</span></button>
         </div>
     </form>
 </main>

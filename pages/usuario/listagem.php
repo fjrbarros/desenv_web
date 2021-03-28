@@ -23,10 +23,10 @@ foreach ($usuarios as $usuario) {
         <td>' . date('d/m/Y', strtotime($usuario->data_cadastro)) . '</td>
         <td style="text-align: center;">
             <a style="text-decoration:none;" href="./editar_usuario.php?id=' . $usuario->id . '">
-                <button type="button" class="btn btn-primary"><i class="fas fa-user-edit"></i>&nbsp;<span>Editar</span></button>
+                <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-user-edit"></i>&nbsp;<span>Editar</span></button>
             </a>
             <a style="text-decoration:none;" href="./excluir_usuario.php?id=' . $usuario->id . '">
-                <button type="button" class="btn btn-danger"><i class="fas fa-user-times"></i>&nbsp;<span>Excluir</span></button>
+                <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-user-times"></i>&nbsp;<span>Excluir</span></button>
             </a>
         </td>
     </tr>';
@@ -41,7 +41,7 @@ $resultado = strlen($resultado) ? $resultado : '<tr><td colspan="7" class="text-
 
     <section>
         <a href="./cadastro_usuario.php">
-            <button class="btn btn-success">
+            <button class="btn btn-success btn-sm">
                 <i class="fas fa-plus"></i>
                 <span>Cadastrar</span>
             </button>
