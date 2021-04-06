@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 require_once "../../vendor/autoload.php";
 
-define('TITLE', 'Editar usuário');
+define('TITLE', 'Editar produto');
 
 use \App\entity\Produto;
 
