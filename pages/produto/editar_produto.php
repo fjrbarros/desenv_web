@@ -1,16 +1,27 @@
 <?php
 
-// if (session_status() == PHP_SESSION_NONE) {
-//     session_start();
-//}
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 require_once "../../vendor/autoload.php";
 
-define('TITLE', 'Cadastro de produto');
+define('TITLE', 'Editar usuário');
 
 use \App\entity\Produto;
 
-$produto = new Produto();
+if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
+    header('location: ./index.php?status=error');
+    exit;
+}
+
+$produto = Produto::getProdutoId($_GET['id']);
+
+
+if (!$produto instanceof Produto) {
+    header('location: ./index.php?status=error');
+    exit;
+}
 
 $msg_erro = "";
 
@@ -41,9 +52,10 @@ if (isset($_POST['salvar'])) {
     $msg_erro = montaMsgErro($msg_erro);
 
     if (strlen($msg_erro) === 0) {
-        $produto->cadastrar();
+        $produto->atualizar();
+
         header('location: /desenv_web/index.php');
-        exit();
+        exit;
     }
 }
 

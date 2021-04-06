@@ -11,6 +11,7 @@ use \App\entity\Usuario;
 
 if (isset($_SESSION['LOGADO'])) {
     header('location: ../../index.php');
+    exit;
 }
 
 $usuario = new Usuario();
@@ -35,10 +36,10 @@ if (isset($_POST['login'])) {
         $data = $usuario->login();
 
         if (count($data) === 0) {
-            $errorText = "Erro ao recuperar dados!";
+            $errorText = "Usuário não cadastrado!";
         } else {
             $_SESSION['LOGADO'] = true;
-            $_SESSION['ADM'] = strtoupper($data[0]->administrador) === "S";
+            $_SESSION['ADM'] = strtoupper($data[0]->administrador);
             $_SESSION['ID_USUARIO'] = $data[0]->id;
             header('location: ../../index.php');
             exit;

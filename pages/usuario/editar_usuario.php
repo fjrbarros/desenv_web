@@ -31,11 +31,6 @@ if (isset($_POST['salvar'])) {
         exit;
     }
 
-    // echo "<pre>";
-    // print_r($_POST);
-    // echo "</pre>";
-    // exit;
-
     $usuario->nome = $_POST['nome'];
     $usuario->email = $_POST['email'];
     $usuario->senha = $_POST['senha'];

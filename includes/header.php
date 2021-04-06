@@ -2,6 +2,11 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+if (!isset($_SESSION['ADM'])) {
+    $_SESSION['ADM'] = "N";
+}
+
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -34,12 +39,16 @@ if (session_status() == PHP_SESSION_NONE) {
                         <span>Usuários</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/desenv_web/pages/produto/index.php">
-                        <i class="fas fa-box-open"></i>
-                        <span>Produtos</span>
-                    </a>
-                </li>
+                <?php
+                if (strtoupper($_SESSION['ADM']) === "S") {
+                    echo '<li>
+                            <a href="/desenv_web/pages/produto/index.php">
+                                <i class="fas fa-box-open"></i>
+                                <span>Produtos</span>
+                            </a>
+                        </li>';
+                }
+                ?>
                 <li>
                     <a href="#">
                         <i class="fas fa-shopping-cart"></i>

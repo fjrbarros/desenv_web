@@ -1,3 +1,14 @@
+<?php
+
+if (!isset($_SESSION['ADM'])) {
+    $_SESSION['ADM'] = "N";
+}
+
+$hiddenAdm = strtoupper($_SESSION['ADM']) === "N" ? "hidden" : "";
+
+?>
+
+
 <main>
     <form method="POST" style="max-width: 600px; margin: 0 auto;" id="form-user">
         <h3 class="text-center"><?= TITLE ?></h3>
@@ -18,7 +29,7 @@
                 Cliente
             </label>
         </div>
-        <div class="form-check">
+        <div class="form-check" <?= $hiddenAdm ?>>
             <input name="administrador" class="form-check-input" type="checkbox" value="s" id="checkadm" <?= $usuario->administrador === 's' ? 'checked' : ''  ?>>
             <label class="form-check-label" for="checkadm">
                 Administrador

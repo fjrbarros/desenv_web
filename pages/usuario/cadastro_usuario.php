@@ -26,7 +26,7 @@ if (isset($_POST['salvar'])) {
     $usuario->estado = $_POST['estado'];
     $usuario->cidade = $_POST['cidade'];
     $usuario->cliente = $_POST['cliente'] ? $_POST['cliente'] : "";
-    $usuario->administrador = $_POST['administrador'] ? $_POST['administrador'] : "";
+    $usuario->administrador = $_POST['administrador'] ? $_POST['administrador'] : "N";
 
     $usuario->cadastrar();
     header('location: ./index.php?status=success');

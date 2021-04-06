@@ -30,3 +30,14 @@
 .card-info {
     padding: 10px;
 }
+
+.nome-card {
+    max-width: 245px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.produtos-nao-cadastrados {
+    text-align: center;
+}

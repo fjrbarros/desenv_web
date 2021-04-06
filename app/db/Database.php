@@ -10,7 +10,7 @@ class Database
 {
     //Configurações padrões da conexão.
     const host = 'localhost';
-    const name = 'desenv_web';
+    const name = 'avll_desenvweb';
     const user = 'root';
     const pass = 'barros123';
 
