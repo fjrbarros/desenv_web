@@ -72,19 +72,6 @@ if (!isset($_SESSION['ADM'])) {
                         "</li>";
                 }
                 ?>
-                <!-- <li>
-                    <a href="/desenv_web/pages/login/index.php">
-                        <i class="fas fa-sign-in-alt"></i>
-                        <span>Login</span>
-                    </a>
-                </li> -->
-                <!-- <li>
-                    <a href="#">Cadastro</a>
-                    <ul>
-                        <li><a href="/desenv_web/pages/usuario/cadastro_usuario.php">Usuário</a></li>
-                        <li><a href="#">Produto</a></li>
-                    </ul>
-                </li> -->
             </ul>
         </nav>
     </header>
