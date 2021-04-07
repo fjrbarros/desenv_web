@@ -12,7 +12,7 @@ class Database
     const host = 'localhost';
     const name = 'avll_desenvweb';
     const user = 'root';
-    const pass = 'barros123';
+    const pass = '';
 
     private $table;
     private $connection;

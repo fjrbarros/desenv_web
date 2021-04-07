@@ -21,22 +21,24 @@ $errorText = "";
 
 if (isset($_POST['login'])) {
 
+    $usuario->email = $_POST['email'];
+    $usuario->senha = $_POST['senha'];
+
     if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $errorText .= "E-mail inválido. </br>";
     }
 
-    if (strlen($_POST['senha']) < 6) {
-        $errorText .= "Senha deve possuir mais 6 ou mais caracteres";
+    if (strlen($_POST['senha']) === 0) {
+        $errorText .= "Senha inválida!";
     }
 
-    if (strlen($errorText) == 0) {
-        $usuario->email = $_POST['email'];
-        $usuario->senha = $_POST['senha'];
+    $errorText = montaMsgErro($errorText);
 
+    if (strlen($errorText) === 0) {
         $data = $usuario->login();
 
         if (count($data) === 0) {
-            $errorText = "Usuário não cadastrado!";
+            $errorText = montaMsgErro("Usuário não cadastrado!");
         } else {
             $_SESSION['LOGADO'] = true;
             $_SESSION['ADM'] = strtoupper($data[0]->administrador);
@@ -45,6 +47,11 @@ if (isset($_POST['login'])) {
             exit;
         }
     }
+}
+
+function montaMsgErro($msg)
+{
+    return strlen($msg) ? '<div class="border border-danger p-2 text-danger""> ' . $msg . '</div>' : "";
 }
 
 include_once "./page.php";

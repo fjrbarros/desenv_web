@@ -11,15 +11,9 @@
 
 <body class="bg-dark">
     <form method="POST">
-        <input required placeholder="E-mail" type="text" class="form-control mb-3" name="email">
-        <input required placeholder="Senha" type="password" class="form-control mb-3" name="senha">
-        <?php
-        if (strlen($errorText) > 0) {
-            echo "<div class='border border-danger p-2 text-danger'>" .
-                $errorText .
-                "</div>";
-        }
-        ?>
+        <input placeholder="E-mail" type="text" class="form-control mb-3" name="email" value="<?= $usuario ? $usuario->email : '' ?>">
+        <input placeholder="Senha" type="password" class="form-control mb-3" name="senha" value="<?= $usuario ? $usuario->senha : '' ?>">
+        <?= $errorText ?>
         <button class="btn btn-outline-primary" name="login">Entrar</button>
     </form>
 </body>
