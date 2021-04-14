@@ -51,4 +51,9 @@ if (isset($_POST['login'])) {
     }
 }
 
+function montaMsgErro($msg)
+{
+    return strlen($msg) ? '<div class="border border-danger p-2 text-danger""> ' . $msg . '</div>' : "";
+}
+
 include_once "./page.php";
