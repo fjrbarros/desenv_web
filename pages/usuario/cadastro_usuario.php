@@ -9,36 +9,38 @@ require_once "../../vendor/autoload.php";
 define('TITLE', 'Cadastrar usuário');
 
 use \App\entity\Usuario;
+use \App\entity\Util;
 
 $usuario = new Usuario();
+$util = new Util();
+
+$msgError = "";
+
+$usuario->nome = empty($_POST['nome']) ? "" : $_POST['nome'];
+$usuario->email = empty($_POST['email']) ? "" : $_POST['email'];
+$usuario->senha = empty($_POST['senha']) ? "" : $_POST['senha'];
+$usuario->estado = empty($_POST['estado']) ? "" : $_POST['estado'];
+$usuario->cidade = empty($_POST['cidade']) ? "" : $_POST['cidade'];
+$usuario->cliente = empty($_POST['cliente']) ? "" : $_POST['cliente'];
+$usuario->administrador = empty($_POST['administrador']) ? "" : $_POST['administrador'];
 
 if (isset($_POST['salvar'])) {
+
     if (empty($_POST['cliente']) && empty($_POST['administrador'])) {
-        $_SESSION['MSG_ALERT'] = "Obrigatório selecionar um tipo de usuário!";
-        $_SESSION['LINK_ALERT'] = "/desenv_web/pages/usuario/cadastro_usuario.php";
-        header('location: /desenv_web/util/msg.php');
-        exit;
+        $msgError .= "Obrigatório selecionar um tipo de usuário! <br>";
     }
 
-    $usuario->nome = $_POST['nome'];
-    $usuario->email = $_POST['email'];
-    $usuario->senha = $_POST['senha'];
-    $usuario->estado = $_POST['estado'];
-    $usuario->cidade = $_POST['cidade'];
-    $usuario->cliente = $_POST['cliente'] ? $_POST['cliente'] : "";
-    $usuario->administrador = $_POST['administrador'] ? $_POST['administrador'] : "N";
+    if (strlen($_POST['senha']) < 6) {
+        $msgError .= "Senha deve possuir 6 ou mais caracteres! <br>";
+    }
 
-    $usuario->cadastrar();
-    header('location: ./index.php?status=success');
-    exit();
-} else {
-    $usuario->nome = "";
-    $usuario->email = "";
-    $usuario->senha = "";
-    $usuario->estado = "";
-    $usuario->cidade = "";
-    $usuario->cliente = "";
-    $usuario->administrador = "";
+    if (strlen($msgError) > 0) {
+        $msgError = $util->MsgError($msgError);
+    } else {
+        $usuario->cadastrar();
+        header('location: ./index.php?status=success');
+        exit;
+    }
 }
 
 include_once "../../includes/header.php";

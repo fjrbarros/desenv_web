@@ -9,14 +9,17 @@ require_once "../../vendor/autoload.php";
 define('TITLE', 'Editar usuário');
 
 use \App\entity\Usuario;
+use \App\entity\Util;
 
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
     header('location: ./index.php?status=error');
     exit;
 }
 
-$usuario = Usuario::getUsuarioId($_GET['id']);
+$msgError = "";
 
+$util = new Util();
+$usuario = Usuario::getUsuarioId($_GET['id']);
 
 if (!$usuario instanceof Usuario) {
     header('location: ./index.php?status=error');
@@ -24,24 +27,29 @@ if (!$usuario instanceof Usuario) {
 }
 
 if (isset($_POST['salvar'])) {
+
     if (empty($_POST['cliente']) && empty($_POST['administrador'])) {
-        $_SESSION['MSG_ALERT'] = "Obrigatório selecionar um tipo de usuário!";
-        $_SESSION['LINK_ALERT'] = "/desenv_web/pages/usuario/editar_usuario.php?id=" . $_GET['id'];
-        header('location: /desenv_web/util/msg.php');
-        exit;
+        $msgError .= "Obrigatório selecionar um tipo de usuário! <br>";
     }
 
-    $usuario->nome = $_POST['nome'];
-    $usuario->email = $_POST['email'];
-    $usuario->senha = $_POST['senha'];
-    $usuario->estado = $_POST['estado'];
-    $usuario->cidade = $_POST['cidade'];
-    $usuario->cliente = $_POST['cliente'] ? $_POST['cliente'] : '';
-    $usuario->administrador = $_POST['administrador'] ? $_POST['administrador'] : '';
-    $usuario->atualizar();
+    if (strlen($_POST['senha']) < 6) {
+        $msgError .= "Senha deve possuir 6 ou mais caracteres! <br>";
+    }
 
-    header('location: ./index.php?status=success');
-    exit;
+    if (strlen($msgError) > 0) {
+        $msgError = $util->MsgError($msgError);
+    } else {
+        $usuario->nome = $_POST['nome'];
+        $usuario->email = $_POST['email'];
+        $usuario->senha = $_POST['senha'];
+        $usuario->estado = $_POST['estado'];
+        $usuario->cidade = $_POST['cidade'];
+        $usuario->cliente = empty($_POST['cliente']) ? "" : $_POST['cliente'];
+        $usuario->administrador = empty($_POST['administrador']) ? "" : $_POST['administrador'];
+        $usuario->atualizar();
+        header('location: ./index.php?status=success');
+        exit;
+    }
 }
 
 include_once "../../includes/header.php";

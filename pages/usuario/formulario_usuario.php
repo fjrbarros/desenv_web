@@ -12,6 +12,7 @@ $hiddenAdm = strtoupper($_SESSION['ADM']) === "N" ? "hidden" : "";
 <main>
     <form method="POST" style="max-width: 600px; margin: 0 auto;" id="form-user">
         <h3 class="text-center"><?= TITLE ?></h3>
+        <?= $msgError ?>
         <input type="hidden" id="value-estado" value="<?= $usuario ? $usuario->estado : '' ?>"></input>
         <input type="hidden" id="value-cidade" value="<?= $usuario ? $usuario->cidade : '' ?>"></input>
         <input required placeholder="Nome" type="text" class="form-control mb-3" name="nome" value="<?= $usuario ? $usuario->nome : '' ?>">
